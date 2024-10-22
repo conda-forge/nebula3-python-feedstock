@@ -1,5 +1,5 @@
 {% set name = "nebula3-python" %}
-{% set version = "3.8.2" %}
+{% set version = "3.8.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nebula3_python-{{ version }}.tar.gz
-  sha256: 889df21bac0f7ccad1d3a1807d9b736b2136770b24ed03d4fd49b76b3e2612ea
+  sha256: da4693171079e9d5efb01a579f7fb62ef7655f6169cc2ff2cbb7b7d902e2cf3d
 
 build:
   noarch: python
