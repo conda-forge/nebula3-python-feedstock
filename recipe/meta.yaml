@@ -12,16 +12,16 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6.2
+    - python {{ python_min }}
     - pdm-backend
     - setuptools
     - pip
   run:
-    - python >=3.6.2
+    - python >={{ python_min }}
     - future >=0.18.0
     - httplib2 >=0.20.0
     - pytz >=2021.1
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/vesoft-inc/nebula-python
