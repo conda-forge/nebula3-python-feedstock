@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: nebula3-python
+  version: "3.8.3"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/nebula3_python-${{ version }}.tar.gz
+  sha256: da4693171079e9d5efb01a579f7fb62ef7655f6169cc2ff2cbb7b7d902e2cf3d
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pdm-backend
+    - setuptools
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - future >=0.18.0
+    - httplib2 >=0.20.0
+    - pytz >=2021.1
+    - six >=1.16.0
+    - httpx >=0.22.0
+
+tests:
+  - python:
+      imports:
+        - nebula3
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Python client for NebulaGraph v3
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/vesoft-inc/nebula-python
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
